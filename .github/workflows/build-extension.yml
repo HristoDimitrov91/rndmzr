@@ -1,0 +1,40 @@
+name: Build and Package Chrome Extension
+
+on:
+  push:
+    branches: [ main ]
+  # Optionally, also trigger on tags:
+  # tags:
+  #   - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build extension
+        run: yarn build
+
+      - name: Rename dist folder
+        run: mv dist chrome-extension
+
+      - name: Zip extension
+        run: zip -r chrome-extension.zip chrome-extension
+
+      - name: Upload zipped extension as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-extension
+          path: chrome-extension.zip
