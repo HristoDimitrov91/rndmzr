@@ -29,7 +29,7 @@ export default class ClockifyService {
     }
 
     async submitApprovalRequest(workspace, userId, weekStart) {
-        const approvalRequest = { weekTime: weekStart }
+        const approvalRequest = { period: 'WEEKLY', weekTime: weekStart }
         await this.httpClient.post(`https://global.api.clockify.me/workspaces/${workspace}/users/${userId}/approval-requests/`, approvalRequest)
     }
 
@@ -38,7 +38,7 @@ export default class ClockifyService {
         const end = weekStart.add(1, 'week').subtract(1, 'millisecond').format()
 
         const entriesResponse = await this.httpClient.get(`https://global.api.clockify.me/workspaces/${workspace}/timeEntries/users/${userId}?start=${start}&end=${end}&hydrated=true&page-size=500`)
-        const weekStatusResponse = await this.httpClient.get(`https://global.api.clockify.me/workspaces/${workspace}/users/${userId}/approval-requests/week-status?start=${weekStart.format()}`)
+        const weekStatusResponse = await this.httpClient.get(`https://global.api.clockify.me/workspaces/${workspace}/users/${userId}/approval-requests/status?start=${weekStart.format()}`)
 
         const entries = entriesResponse.data
         const status = this.getWeekStatus(entries, weekStatusResponse.data)
