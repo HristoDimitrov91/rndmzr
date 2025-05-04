@@ -3,9 +3,6 @@ name: Build and Package Chrome Extension
 on:
   push:
     branches: [ main ]
-  # Optionally, also trigger on tags:
-  # tags:
-  #   - 'v*'
 
 jobs:
   build:
@@ -34,7 +31,7 @@ jobs:
         run: zip -r chrome-extension.zip chrome-extension
 
       - name: Upload zipped extension as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: chrome-extension
           path: chrome-extension.zip
