@@ -4,9 +4,6 @@ Chrome extension which *automagically* generates and submits Clockify timesheets
 ## Motivation
 Filling out timesheets is too much of a hassle - why bother? 😅
 
-## Build status
-[![Build Status](https://travis-ci.com/marchev/rndmzr.svg?branch=main)](https://travis-ci.com/marchev/rndmzr)
-
 ## Screenshots
 ![rndmzr](https://raw.githubusercontent.com/marchev/rndmzr/main/meta/app-screenshot.png)
 
@@ -21,22 +18,35 @@ Built with:
 - Automagic randomized generation and submission of Clockify timesheets
 - Historical timesheets browsing
 
-## How to use?
-1. Navigate to https://chrome.google.com/webstore/detail/rndmzr/kfmkpkijifhcceglddpienfkembifjlj
-1. Install the extension
-1. rndmz 😎
+## 📦 Download & Use the Pre-Built Extension
+To skip the build process and just use the extension:
 
-## Development
-1. `git clone https://github.com/marchev/rndmzr.git && cd rndmzr`
+1. Visit the Releases page
+2. Download the latest rndmzr-chrome-extension.zip
+3. Unzip it
+4. Open Chrome and go to chrome://extensions
+5. Enable Developer Mode
+6. Click Load unpacked
+7. Select the unzipped folder
+8. Fill in required settings configuration - Role & Clockify API key
+
+## 🔧 Local Development Setup
+This is a Vue 2-based Chrome extension. You can either run it locally for development or download a pre-built version from GitHub Releases for quick installation.
+
+### Requirements
+
+- WSL (Ubuntu) or Linux/macOS/Windows with Node.js
+- Node.js (version 16 recommended)
+- Yarn (installed via [Corepack](https://nodejs.org/api/corepack.html))
+    - `corepack enable`
+    - `corepack prepare yarn@stable --activate`
+
+1. Clone the repo and navigate to the directory
 2. `yarn serve`
 3. In Chrome navigate to Extensions
 4. Enable **Developer Mode**
 5. Clock **Load unpacked** and point to the `rndmzr/dist` directory
 6. Code and have fun 👻
-
-## Contribute
-Any contribution is more than welcomed. If you find a issue, have an idea of a great feature or simply want to make a pull request - go for it! Here is a kanban board with all project issues:
-https://github.com/marchev/rndmzr/projects/1 
 
 ## Project with a cause
 This extension is **donationware** - all proceeds received would be donated to [SOS Children's Villages Bulgaria](https://sosbg.org/).
